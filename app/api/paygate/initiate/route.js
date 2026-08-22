@@ -11,7 +11,11 @@ export async function POST(req) {
   const order = await Order.findById(orderId).lean();
   if (!order) return NextResponse.json({ error: "Order not found" }, { status: 404 });
 
-  const site = process.env.NEXT_PUBLIC_SITE_URL;
+  // Strip any trailing slash so `${site}/checkout/success` never becomes a
+  // double-slash URL — PayGate redirects the browser straight to this URL,
+  // and a reverse proxy in front of the deployed site may 404 on `//path`
+  // instead of normalizing it the way Next.js's own dev server does.
+  const site = (process.env.NEXT_PUBLIC_SITE_URL || "").replace(/\/+$/, "");
 
   try {
     const result = await initiatePayment({

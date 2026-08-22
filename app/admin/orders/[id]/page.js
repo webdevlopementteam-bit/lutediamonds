@@ -5,6 +5,7 @@ import { connectDB } from "@/lib/db";
 import Order from "@/models/Order";
 import { formatZAR } from "@/lib/format";
 import OrderStatusForm from "@/components/admin/OrderStatusForm";
+import { resolvePendingPayment } from "@/lib/resolvePayment";
 
 const iconProps = {
   viewBox: "0 0 24 24",
@@ -62,8 +63,9 @@ function Card({ title, icon, children }) {
 export default async function AdminOrderDetailPage({ params }) {
   const { id } = await params;
   await connectDB();
-  const order = await Order.findById(id).lean();
+  let order = await Order.findById(id).lean();
   if (!order) notFound();
+  order = await resolvePendingPayment(order);
 
   const addr = order.shippingAddress || {};
   const placedOn = order.createdAt

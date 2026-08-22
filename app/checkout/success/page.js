@@ -2,21 +2,36 @@ import Link from "next/link";
 import { connectDB } from "@/lib/db";
 import Order from "@/models/Order";
 import { formatZAR } from "@/lib/format";
+import { resolvePendingPayment } from "@/lib/resolvePayment";
 
 export default async function CheckoutSuccessPage({ searchParams }) {
   const sp = await searchParams;
   await connectDB();
-  const order = sp.order ? await Order.findOne({ orderNumber: sp.order }).lean() : null;
+  let order = sp.order ? await Order.findOne({ orderNumber: sp.order }).lean() : null;
+  if (order) order = await resolvePendingPayment(order);
+
+  const heading =
+    order?.paymentStatus === "failed"
+      ? "Payment was not completed"
+      : order?.paymentStatus === "paid"
+        ? "Thank you for your order!"
+        : "Order received";
+
+  const message =
+    order?.paymentStatus === "paid"
+      ? "Payment confirmed."
+      : order?.paymentStatus === "failed"
+        ? "Your payment with PayGate wasn't completed — this happens if the payment page was closed or cancelled before finishing. Your order is saved as pending; you can try paying again from your order history, or contact us for help."
+        : "We're confirming your payment with PayGate — this can take a minute. Refresh this page shortly to see the update.";
 
   return (
     <div className="container-lute max-w-xl py-20 text-center">
-      <h1 className="font-serif text-3xl mb-4">Thank you for your order!</h1>
+      <h1 className="font-serif text-3xl mb-4">{heading}</h1>
 
       {order ? (
         <>
           <p className="text-muted mb-6">
-            Order <span className="text-foreground font-medium">{order.orderNumber}</span> has
-            been placed. {order.paymentStatus === "paid" ? "Payment confirmed." : "We're confirming your payment with PayGate — this can take a minute."}
+            Order <span className="text-foreground font-medium">{order.orderNumber}</span>. {message}
           </p>
           <div className="border border-border rounded-lg p-6 text-left mb-8">
             <div className="flex justify-between text-sm py-1">

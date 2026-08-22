@@ -6,6 +6,7 @@ import Order from "@/models/Order";
 import { getCurrentUser } from "@/lib/auth";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { formatZAR } from "@/lib/format";
+import { resolvePendingPayment } from "@/lib/resolvePayment";
 
 const ArrowIcon = (p) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...p}>
@@ -48,8 +49,9 @@ export default async function OrderDetailPage({ params }) {
   const { id } = await params;
   const session = await getCurrentUser();
   await connectDB();
-  const order = await Order.findById(id).lean();
+  let order = await Order.findById(id).lean();
   if (!order || order.user?.toString() !== session.sub) notFound();
+  order = await resolvePendingPayment(order);
 
   const addr = order.shippingAddress || {};
   const placedOn = order.createdAt
