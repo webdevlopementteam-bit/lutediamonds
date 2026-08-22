@@ -19,7 +19,7 @@ export const COMPANY = {
   phoneHref: "+27722529457",
   website: "https://www.lutediamonds.com",
 
-  paymentProcessor: "PayFast",
+  paymentProcessor: "PayGate",
   currency: "South African Rand (ZAR)",
 
   // policy numbers — ek jagah change karo, chaaron pages pe update ho jayega

@@ -46,7 +46,7 @@ const ShieldIcon = (p) => (
 
 const TRUST = [
   { Icon: TruckIcon, title: "Free shipping", sub: "& easy exchanges" },
-  { Icon: CardIcon, title: "Flexible payment", sub: "via PayFast" },
+  { Icon: CardIcon, title: "Flexible payment", sub: "via PayGate" },
   { Icon: ShieldIcon, title: "Secure checkout", sub: "trusted by thousands" },
 ];
 

@@ -32,7 +32,10 @@ export default async function HomePage() {
   ]);
 
   const wishlistIds = await getWishlistIds();
-  const products = toPlain(featured.length ? featured : latest);
+  const products = toPlain(featured.length ? featured : latest).map((p) => ({
+    ...p,
+    initialWishlisted: wishlistIds.includes(p._id),
+  }));
 
   return (
     <div>

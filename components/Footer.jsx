@@ -14,7 +14,7 @@ const SHOP_LINKS = [
 ];
 
 const CATEGORY_LINKS = [
-  { href: "/shop", label: "Jewellery" },
+  { href: "/product-category/jewellery", label: "Jewellery" },
   { href: "/shop", label: "Polished Precious Stones" },
   { href: "/shop", label: "Semi-Precious Polished Stones" },
 ];
@@ -124,7 +124,7 @@ export default function Footer() {
             <ColumnHeading>Categories</ColumnHeading>
             <ul className="space-y-3.5">
               {CATEGORY_LINKS.map((l) => (
-                <li key={l.href}>
+                <li key={l.label}>
                   <FooterLink href={l.href}>{l.label}</FooterLink>
                 </li>
               ))}

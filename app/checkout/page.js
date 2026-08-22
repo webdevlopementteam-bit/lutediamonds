@@ -24,16 +24,16 @@ export default function CheckoutPage() {
   const [form, setForm] = useState(initialForm);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
-  const [payfast, setPayfast] = useState(null);
+  const [paygate, setPaygate] = useState(null);
   const formRef = useRef(null);
 
   useEffect(() => setMounted(true), []);
 
   useEffect(() => {
-    if (payfast && formRef.current) {
+    if (paygate && formRef.current) {
       formRef.current.submit();
     }
-  }, [payfast]);
+  }, [paygate]);
 
   if (!mounted) return null;
 
@@ -65,7 +65,7 @@ export default function CheckoutPage() {
       const order = await orderRes.json();
       if (!orderRes.ok) throw new Error(order.error || "Could not place order");
 
-      const payRes = await fetch("/api/payfast/initiate", {
+      const payRes = await fetch("/api/paygate/initiate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ orderId: order._id }),
@@ -74,14 +74,14 @@ export default function CheckoutPage() {
       if (!payRes.ok) throw new Error(payData.error || "Could not start payment");
 
       clear();
-      setPayfast(payData);
+      setPaygate(payData);
     } catch (err) {
       setError(err.message);
       setSubmitting(false);
     }
   }
 
-  if (items.length === 0 && !payfast) {
+  if (items.length === 0 && !paygate) {
     return (
       <div className="container-lute py-20 text-center">
         <p className="text-muted mb-6">Your cart is empty.</p>
@@ -118,7 +118,7 @@ export default function CheckoutPage() {
           {error && <p className="text-red-600 text-sm">{error}</p>}
 
           <button type="submit" disabled={submitting} className="btn-gold w-full py-3 rounded text-sm mt-4">
-            {submitting ? "Redirecting to PayFast..." : "Pay with PayFast"}
+            {submitting ? "Redirecting to PayGate..." : "Pay with PayGate"}
           </button>
         </form>
 
@@ -149,9 +149,9 @@ export default function CheckoutPage() {
         </div>
       </div>
 
-      {payfast && (
-        <form ref={formRef} action={payfast.actionUrl} method="POST" className="hidden">
-          {Object.entries(payfast.fields).map(([key, value]) => (
+      {paygate && (
+        <form ref={formRef} action={paygate.actionUrl} method="POST" className="hidden">
+          {Object.entries(paygate.fields).map(([key, value]) => (
             <input key={key} type="hidden" name={key} value={value} />
           ))}
         </form>

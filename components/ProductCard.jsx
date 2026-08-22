@@ -10,11 +10,17 @@ import { useWishlistStore } from "@/store/useWishlistStore";
 import StarRating from "./StarRating";
 import { Eye, Heart } from "lucide-react";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, initialWishlisted = false }) {
   const addItem = useCartStore((s) => s.addItem);
-  const wishlisted = useWishlistStore((s) => s.isWishlisted(product._id));
+  const hasSynced = useWishlistStore((s) => s.hasSynced);
+  const storeWishlisted = useWishlistStore((s) => s.isWishlisted(product._id));
   const toggleWishlistStore = useWishlistStore((s) => s.toggle);
   const [pending, setPending] = useState(false);
+
+  // Until the global store has synced with the server (see Header.jsx),
+  // trust the server-rendered prop so the heart is correct on first paint
+  // instead of flashing unselected while that sync is still in flight.
+  const wishlisted = hasSynced ? storeWishlisted : initialWishlisted;
 
   async function toggleWishlist(e) {
     e.preventDefault();

@@ -16,7 +16,7 @@ export default async function CheckoutSuccessPage({ searchParams }) {
         <>
           <p className="text-muted mb-6">
             Order <span className="text-foreground font-medium">{order.orderNumber}</span> has
-            been placed. {order.paymentStatus === "paid" ? "Payment confirmed." : "We're confirming your payment with PayFast — this can take a minute."}
+            been placed. {order.paymentStatus === "paid" ? "Payment confirmed." : "We're confirming your payment with PayGate — this can take a minute."}
           </p>
           <div className="border border-border rounded-lg p-6 text-left mb-8">
             <div className="flex justify-between text-sm py-1">

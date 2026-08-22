@@ -1,28 +1,28 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/db";
 import Order from "@/models/Order";
-import { verifyItnSignature } from "@/lib/payfast";
+import { verifyNotifyChecksum } from "@/lib/paygate";
 
 export async function POST(req) {
   const formData = await req.formData();
   const data = Object.fromEntries(formData.entries());
 
-  if (!verifyItnSignature(data)) {
-    return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
+  if (!verifyNotifyChecksum(data)) {
+    return NextResponse.json({ error: "Invalid checksum" }, { status: 400 });
   }
 
   await connectDB();
 
-  const order = await Order.findOne({ orderNumber: data.m_payment_id });
+  const order = await Order.findOne({ orderNumber: data.REFERENCE });
   if (!order) return NextResponse.json({ error: "Order not found" }, { status: 404 });
 
-  if (data.payment_status === "COMPLETE") {
+  if (data.TRANSACTION_STATUS === "1") {
     order.paymentStatus = "paid";
     order.orderStatus = "processing";
-  } else if (data.payment_status === "FAILED") {
+  } else {
     order.paymentStatus = "failed";
   }
-  order.payfastPaymentId = data.pf_payment_id || order.payfastPaymentId;
+  order.paygatePaymentId = data.PAY_REQUEST_ID || order.paygatePaymentId;
   await order.save();
 
   return new NextResponse("OK", { status: 200 });

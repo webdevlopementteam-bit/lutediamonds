@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useCartStore } from "@/store/useCartStore";
+import { useWishlistStore } from "@/store/useWishlistStore";
 import { Sparkles } from "lucide-react";
 
 /* 👇 apne assets ke path yahan change kar lena */
@@ -120,6 +121,8 @@ const ChevronDown = (p) => (
 
 export default function Header() {
   const items = useCartStore((s) => s.items);
+  const wishlistIds = useWishlistStore((s) => s.wishlistIds);
+  const setWishlistIds = useWishlistStore((s) => s.setWishlistIds);
   const pathname = usePathname();
   const router = useRouter();
 
@@ -136,9 +139,12 @@ export default function Header() {
     setMounted(true);
     fetch("/api/auth/me")
       .then((r) => r.json())
-      .then((d) => setUser(d.user))
+      .then((d) => {
+        setUser(d.user);
+        setWishlistIds(d.user?.wishlist || []);
+      })
       .catch(() => {});
-  }, [pathname]);
+  }, [pathname, setWishlistIds]);
 
   useEffect(() => {
     setMenuOpen(false);
@@ -164,6 +170,7 @@ export default function Header() {
   }, []);
 
   const cartCount = mounted ? items.reduce((sum, i) => sum + i.qty, 0) : 0;
+  const wishlistCount = mounted ? wishlistIds.length : 0;
   const isActive = (href) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
 
   const submitSearch = (e) => {
@@ -288,8 +295,13 @@ export default function Header() {
                 )}
               </Link>
 
-              <Link href="/wishlist" aria-label="Wishlist" className="transition-colors hover:text-[#BF9A3A]">
+              <Link href="/wishlist" aria-label="Wishlist" className="relative transition-colors hover:text-[#BF9A3A]">
                 <HeartIcon className="h-[26px] w-[26px]" />
+                {wishlistCount > 0 && (
+                  <span className="absolute -right-2 -top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#BF9A3A] px-1 text-[10px] font-semibold text-white">
+                    {wishlistCount}
+                  </span>
+                )}
               </Link>
 
               <Link
@@ -431,7 +443,7 @@ export default function Header() {
           {[
             { href: "/", label: "Home", Icon: HomeIcon },
             { href: "/shop", label: "Shop", Icon: SearchIcon },
-            { href: "/wishlist", label: "Wishlist", Icon: HeartIcon },
+            { href: "/wishlist", label: "Wishlist", Icon: HeartIcon, badge: wishlistCount },
             { href: "/cart", label: "Cart", Icon: BagIcon, badge: cartCount },
             {
               href: user ? "/account" : "/account/login",
