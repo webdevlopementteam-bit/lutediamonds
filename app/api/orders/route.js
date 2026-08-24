@@ -21,7 +21,8 @@ export async function POST(req) {
   await connectDB();
 
   const subtotal = items.reduce((sum, i) => sum + i.price * i.qty, 0);
-  const shippingFee = subtotal >= 50000 ? 0 : 500;
+  // Shipping is free storewide — no threshold, no flat fee.
+  const shippingFee = 0;
   const total = subtotal + shippingFee;
 
   const session = await getCurrentUser();

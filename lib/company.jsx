@@ -28,8 +28,10 @@ export const COMPANY = {
   refundDays: 10,
   transitClaimHours: 48,
   dispatchTime: "5–10 business days",
-  freeShippingThreshold: "R50,000",
-  flatShippingFee: "R500",
+  // Shipping is free storewide (no threshold, no flat fee) — see app/api/orders/route.js.
+  // freeShippingThreshold: "R50,000",
+  // flatShippingFee: "R500",
+  shipping: "Free on all orders",
 
   lastUpdated: "21 August 2026",
 };

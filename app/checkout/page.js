@@ -38,7 +38,8 @@ export default function CheckoutPage() {
   if (!mounted) return null;
 
   const subtotal = items.reduce((sum, i) => sum + i.price * i.qty, 0);
-  const shippingFee = subtotal >= 50000 || subtotal === 0 ? 0 : 500;
+  // Shipping is free storewide — no threshold, no flat fee.
+  const shippingFee = 0;
   const total = subtotal + shippingFee;
 
   async function handleSubmit(e) {

@@ -190,9 +190,8 @@ const SECTIONS = [
       <>
         <P>
           Handcrafted pieces are typically dispatched within {COMPANY.dispatchTime}. Bespoke
-          commissions take longer and we will give you a timeline before work begins. Orders over{" "}
-          {COMPANY.freeShippingThreshold} ship free; other orders carry a flat{" "}
-          {COMPANY.flatShippingFee} delivery fee.
+          commissions take longer and we will give you a timeline before work begins.{" "}
+          {COMPANY.shipping} — there is no delivery fee.
         </P>
         <P>
           We ship with insured, tracked couriers and email you the tracking details on dispatch. A

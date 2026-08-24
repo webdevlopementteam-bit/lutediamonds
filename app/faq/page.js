@@ -48,7 +48,7 @@ const GROUPS = [
       },
       {
         q: "How much is delivery?",
-        a: `Orders over ${COMPANY.freeShippingThreshold} ship free. Everything else carries a flat ${COMPANY.flatShippingFee} delivery fee, shown at checkout.`,
+        a: `${COMPANY.shipping} — no minimum spend, no delivery fee, ever.`,
       },
       {
         q: "Is my parcel insured?",
