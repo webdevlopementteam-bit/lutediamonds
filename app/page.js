@@ -18,6 +18,8 @@ import Testimonials from "@/components/Testimonials";
 import CuratedYou from "@/components/CuratedYou";
 import LatestBlog from "@/components/LatestBlog";
 import GalleryStrip from "@/components/GalleryStrip";
+import WhyChooseTanzanite from "@/components/WhyChooseTanzanite";
+import TanzaniteFAQ from "@/components/TanzaniteFAQ";
 
 export const revalidate = 0;
 
@@ -156,8 +158,10 @@ export default async function HomePage() {
 
       <Testimonials />
       <CuratedYou />
+      <WhyChooseTanzanite/>
       <LatestBlog />
       <GalleryStrip />
+      <TanzaniteFAQ/>
     </div>
   );
 }

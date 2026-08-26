@@ -19,15 +19,11 @@ export default function MoreAboutUs() {
       {/* Overlay content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
         <h1 className="text-white text-3xl md:text-4xl font-medium max-w-2xl leading-tight">
-          Jewellery From The World's Finest Designers
+          Certified Tanzanite Jewellery, Handcrafted for the UK & Europe
         </h1>
 
         <p className="text-white/90 text-sm md:text-base max-w-2xl mt-6 font-semibold leading-relaxed">
-          We believe in the power of jewellery — to tell a story, celebrate a
-          moment, create or continue a tradition. There's a wonder in wearing
-          something made from the earth. Each Lute Diamonds piece is crafted
-          with ethically sourced precious metals to reflect our commitment to
-          human rights and environmental sustainability.
+          Lute Diamonds brings the rare beauty of Tanzanite to jewellery lovers across the UK and Europe. Since 2006, our artisans have handcrafted certified Tanzanite jewellery — from statement engagement rings to delicate earrings and bracelets — combining ethically sourced precious metals with genuine, certified gemstones. Every piece is designed to celebrate life's most meaningful moments, delivered securely to your door across the United Kingdom and Europe. 
         </p>
 
         <Link

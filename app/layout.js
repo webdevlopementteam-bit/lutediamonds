@@ -9,12 +9,15 @@ const interTight = Inter_Tight({
 });
 
 export const metadata = {
-  title: "Lute Diamonds | Premium Handcrafted Jewellery",
+  title: "Lute Diamonds | Buy Certified Tanzanite Jewellery in UK",
   description:
-    "Handcrafted, ethically sourced diamond jewellery from Lute Diamonds — wedding rings, pendants and earrings, made in South Africa since 2006.",
-    icons:{
-      icon:"/favicon.png"
-    }
+    " Lute Diamonds offers certified Tanzanite jewellery in UK & Europe — engagement rings, earrings, bracelets & sets. Handcrafted, ethically sourced. Browse our Tanzanite jewellery now. ",
+  keywords: [
+    "Lute Diamonds", "Certified Tanzanite Jewellery in UK", "Certified Tanzanite Jewellery in Europe",
+  ],
+  icons: {
+    icon: "/favicon.png"
+  }
 };
 
 export default function RootLayout({ children }) {

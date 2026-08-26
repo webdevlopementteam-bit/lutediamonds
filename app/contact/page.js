@@ -3,6 +3,10 @@ import ContactForm from "@/components/ContactForm";
 import GalleryStrip from "@/components/GalleryStrip";
 import LatestBlog from "@/components/LatestBlog";
 
+export const metadata = {
+  title: "Contact | Lute Diamonds",
+}
+
 export default function ContactPage() {
   return (
     <main className="bg-white">

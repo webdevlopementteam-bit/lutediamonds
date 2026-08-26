@@ -26,6 +26,15 @@ const SORT_MAP = {
 /* user ke type kiye special chars ko regex me safe banao */
 const escapeRegex = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
+export const metadata = {
+  title: "Shop All Jewellery UK & Europe | Lute Diamonds",
+  description:
+    "Browse our full collection of certified diamond and Tanzanite jewellery — rings, pendants & earrings. Handcrafted, delivered across the UK & Europe.",
+  keywords: [
+    "Shop diamond jewellery", "shop Tanzanite Jewellery", "Buy jewellery online in Uk", "buy diamond jewellery online in Europe",
+  ],
+}
+
 export default async function ShopPage({ searchParams }) {
   const sp = await searchParams;
   const page = Math.max(1, parseInt(sp.page || "1", 10));

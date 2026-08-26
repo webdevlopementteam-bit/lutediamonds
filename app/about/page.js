@@ -7,6 +7,15 @@ import SignatureSparkleSection from "@/components/SignatureSparkleSection";
 import StorySection from "@/components/StorySection";
 import TeamSection from "@/components/TeamSection";
 
+export const metadata = {
+  title: "About | Lute Diamonds - Kimberley, South Africa",
+  description:
+    " Lute Diamonds has crafted fine diamond jewellery since 2006 in Kimberley, South Africa, now delivering handcrafted pieces across the UK & Europe.",
+  keywords: [
+    "Diamond Jewellery", "Tanzanite Jewellery",
+  ],
+}
+
 export default function AboutPage() {
   return (
     <>
