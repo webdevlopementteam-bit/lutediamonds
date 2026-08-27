@@ -108,6 +108,7 @@ export default function ProductForm({ categories, initialProduct }) {
     category: initialProduct?.category?._id || initialProduct?.category || "",
     description: initialProduct?.description || "",
     images: initialProduct?.images || [],
+    imagesAlt: initialProduct?.imagesAlt || "",
     stock: initialProduct?.stock ?? 10,
     collectionTag: initialProduct?.collectionTag || "",
     featured: initialProduct?.featured || false,
@@ -376,6 +377,15 @@ export default function ProductForm({ categories, initialProduct }) {
           <Card title="Images" description="Pehli image product card aur listings me dikhegi.">
             <MultiImageUploader values={form.images} onChange={(v) => update("images", v)} />
             <FieldError>{fieldErrors.images}</FieldError>
+            <div className="mt-4">
+              <TextField
+                label="Image Alt Text (SEO)"
+                value={form.imagesAlt}
+                onChange={(v) => update("imagesAlt", v)}
+                placeholder="e.g. Oval tanzanite halo pendant in 18k white gold"
+                hint="Applied to all images of this product — describes it for search engines and screen readers."
+              />
+            </div>
           </Card>
 
           <Card title="Description">

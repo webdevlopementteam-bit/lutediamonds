@@ -117,7 +117,7 @@ export default async function BlogPage({ searchParams }) {
                       <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl md:rounded-2xl bg-[#F1ECE2]">
                         <Image
                           src={post.coverImage}
-                          alt={post.title}
+                          alt={post.coverImageAlt || post.title}
                           fill
                           sizes="(max-width: 1024px) 100vw, 65vw"
                           priority={i === 0}
@@ -163,7 +163,7 @@ export default async function BlogPage({ searchParams }) {
                         {post.coverImage && (
                           <Image
                             src={post.coverImage}
-                            alt={post.title}
+                            alt={post.coverImageAlt || post.title}
                             fill
                             sizes="88px"
                             className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"

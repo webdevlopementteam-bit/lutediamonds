@@ -74,7 +74,7 @@ export default function ProductCard({ product, initialWishlisted = false }) {
             {product.images?.[0] ? (
               <Image
                 src={product.images[0]}
-                alt={product.name}
+                alt={product.imagesAlt || product.name}
                 fill
                 sizes="(max-width: 760px) 50vw, 16vw"
                 className="object-cover"

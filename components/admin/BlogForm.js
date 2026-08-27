@@ -68,6 +68,7 @@ export default function BlogForm({ initialPost }) {
     excerpt: initialPost?.excerpt || "",
     content: initialPost?.content || "",
     coverImage: initialPost?.coverImage || "",
+    coverImageAlt: initialPost?.coverImageAlt || "",
     metaTitle: initialPost?.metaTitle || "",
     metaDescription: initialPost?.metaDescription || "",
     keywords: initialPost?.keywords?.join(", ") || "",
@@ -249,6 +250,15 @@ export default function BlogForm({ initialPost }) {
               value={form.coverImage}
               onChange={(url) => update("coverImage", url)}
             />
+            <div className="mt-4">
+              <TextField
+                label="Image Alt Text (SEO)"
+                value={form.coverImageAlt}
+                onChange={(v) => update("coverImageAlt", v)}
+                placeholder="e.g. Model wearing layered gold necklaces"
+                hint="Describes the image for search engines and screen readers."
+              />
+            </div>
           </Card>
 
           <Card title="SEO" description="Leave blank to fall back to the title and excerpt.">

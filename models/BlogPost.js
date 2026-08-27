@@ -7,6 +7,7 @@ const BlogPostSchema = new mongoose.Schema(
     excerpt: { type: String, default: "" },
     content: { type: String, default: "" },
     coverImage: { type: String, default: "" },
+    coverImageAlt: { type: String, default: "" },
     metaTitle: { type: String, default: "" },
     metaDescription: { type: String, default: "" },
     keywords: [{ type: String }],

@@ -58,7 +58,7 @@ export default async function CategoryPage({ params, searchParams }) {
 
       {category.image && (
         <div className="aspect-[3/1] relative rounded-lg overflow-hidden bg-gold-light mb-8">
-          <Image src={category.image} alt={category.name} fill sizes="100vw" className="object-cover" priority />
+          <Image src={category.image} alt={category.imageAlt || category.name} fill sizes="100vw" className="object-cover" priority />
         </div>
       )}
 

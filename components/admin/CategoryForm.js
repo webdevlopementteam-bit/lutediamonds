@@ -29,6 +29,7 @@ export default function CategoryForm({ initialCategory }) {
     slug: initialCategory?.slug || "",
     description: initialCategory?.description || "",
     image: initialCategory?.image || "",
+    imageAlt: initialCategory?.imageAlt || "",
   });
   const [slugTouched, setSlugTouched] = useState(isEdit);
   const [error, setError] = useState("");
@@ -63,7 +64,7 @@ export default function CategoryForm({ initialCategory }) {
       if (isEdit) {
         router.push("/admin/categories");
       } else {
-        setForm({ name: "", slug: "", description: "", image: "" });
+        setForm({ name: "", slug: "", description: "", image: "", imageAlt: "" });
         setSlugTouched(false);
         setSaved(true);
         setTimeout(() => setSaved(false), 3000);
@@ -142,6 +143,19 @@ export default function CategoryForm({ initialCategory }) {
             value={form.image}
             onChange={(url) => setForm({ ...form, image: url })}
           />
+        </div>
+
+        <div>
+          <label className={labelClass}>Image Alt Text (SEO)</label>
+          <input
+            value={form.imageAlt}
+            placeholder="e.g. Gold and diamond wedding rings on display"
+            onChange={(e) => setForm({ ...form, imageAlt: e.target.value })}
+            className={inputClass}
+          />
+          <p className="mt-1.5 text-[12.5px] text-[#9A9A9A]">
+            Describes the image for search engines and screen readers.
+          </p>
         </div>
 
         {error && (

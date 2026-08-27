@@ -25,7 +25,8 @@ const RightIcon = (p) => (
   </svg>
 );
 
-export default function ProductGallery({ images = [], name }) {
+export default function ProductGallery({ images = [], name, alt }) {
+  const altText = alt || name;
   const [active, setActive] = useState(0);
   const startX = useRef(null);
 
@@ -91,7 +92,7 @@ export default function ProductGallery({ images = [], name }) {
           <Image
             key={images[active]}
             src={images[active]}
-            alt={`${name} — image ${active + 1}`}
+            alt={`${altText} — image ${active + 1}`}
             fill
             sizes="(max-width: 1024px) 100vw, 480px"
             className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04]"

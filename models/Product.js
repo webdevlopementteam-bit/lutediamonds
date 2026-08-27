@@ -20,6 +20,8 @@ const ProductSchema = new mongoose.Schema(
     price: { type: Number, required: true },
     compareAtPrice: { type: Number, default: null },
     images: [{ type: String }],
+    // Single alt text shared across all of this product's images.
+    imagesAlt: { type: String, default: "" },
     category: { type: mongoose.Schema.Types.ObjectId, ref: "Category" },
     description: { type: String, default: "" },
     specs: { type: SpecsSchema, default: () => ({}) },

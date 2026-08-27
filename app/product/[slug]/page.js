@@ -13,6 +13,7 @@ import ReviewSection from "@/components/ReviewSection";
 import { formatZAR } from "@/lib/format";
 import { getWishlistIds } from "@/lib/wishlist";
 import { toPlain } from "@/lib/serialize";
+import { buildProductSchema } from "@/lib/schema";
 
 const iconProps = {
   viewBox: "0 0 24 24",
@@ -109,16 +110,20 @@ export default async function ProductPage({ params }) {
   const inStock = product.stock > 0;
   const lowStock = inStock && product.stock <= 5;
   const eyebrow = product.collectionTag || product.category?.name;
+  const productSchema = buildProductSchema(product);
 
   return (
     <div className="pb-20">
-      
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
 
       {/* ---------- main ---------- */}
       <div className="container-lute mt-8 grid gap-10 lg:grid-cols-[minmax(0,500px)_minmax(0,1fr)] lg:gap-16 xl:gap-20">
         {/* gallery */}
         <div className="min-w-0 lg:sticky lg:top-32 lg:self-start">
-          <ProductGallery images={product.images} name={product.name} />
+          <ProductGallery images={product.images} name={product.name} alt={product.imagesAlt} />
         </div>
 
         {/* info */}
