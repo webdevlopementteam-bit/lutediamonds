@@ -170,13 +170,6 @@ export default async function ProductPage({ params }) {
 
           <div className="mt-7 h-px w-full bg-black/[0.08]" />
 
-          {product.description && (
-            <div
-              className="rich-content mt-7 text-[15px] leading-[1.8] text-[#4A4A4A]"
-              dangerouslySetInnerHTML={{ __html: product.description }}
-            />
-          )}
-
           <div className="mt-8">
             <AddToCartBox
               product={product}
@@ -214,6 +207,16 @@ export default async function ProductPage({ params }) {
           </div>
         </div>
       </div>
+
+      {/* ---------- description ---------- */}
+      {product.description && (
+        <section className="container-lute mt-20 border-t border-black/[0.08] pt-14">
+          <div
+            className="rich-content w-full text-[15px] leading-[1.8] text-[#4A4A4A]"
+            dangerouslySetInnerHTML={{ __html: product.description }}
+          />
+        </section>
+      )}
 
       {/* ---------- reviews ---------- */}
       <section className="container-lute mt-20 border-t border-black/[0.08] pt-14">
