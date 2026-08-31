@@ -1,5 +1,9 @@
 import Link from "next/link";
 
+export const metadata = {
+  alternates: { canonical: "/checkout/cancel" },
+};
+
 export default function CheckoutCancelPage() {
   return (
     <div className="container-lute max-w-xl py-20 text-center">

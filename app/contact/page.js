@@ -5,6 +5,7 @@ import LatestBlog from "@/components/LatestBlog";
 
 export const metadata = {
   title: "Contact | Lute Diamonds",
+  alternates: { canonical: "/contact" },
 }
 
 export default function ContactPage() {

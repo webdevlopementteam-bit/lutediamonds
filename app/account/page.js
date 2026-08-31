@@ -8,6 +8,10 @@ import { getWishlistIds } from "@/lib/wishlist";
 import LogoutButton from "@/components/LogoutButton";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
+export const metadata = {
+  alternates: { canonical: "/account" },
+};
+
 const BoxIcon = (p) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...p}>
     <path d="M21 8.5 12 3.5 3 8.5v7L12 20.5l9-5z" />

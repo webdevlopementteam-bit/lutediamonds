@@ -34,6 +34,7 @@ const SearchIcon = ({ className = "" }) => (
 export const metadata = {
   title: "Blog | Lute Diamonds",
   description: "Stories, styling notes and care guides from the Lute Diamonds workshop.",
+  alternates: { canonical: "/blog" },
 };
 
 export default async function BlogPage({ searchParams }) {

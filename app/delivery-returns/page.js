@@ -7,6 +7,7 @@ export const metadata = {
   title: "Refund & Return Policy | Lute Diamonds",
   description:
     "How to return, exchange or get a refund on a Lute Diamonds piece, including your cooling-off rights under South African law.",
+  alternates: { canonical: "/delivery-returns" },
 };
 
 const SECTIONS = [

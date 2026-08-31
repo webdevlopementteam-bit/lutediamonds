@@ -23,6 +23,9 @@ import TanzaniteFAQ from "@/components/TanzaniteFAQ";
 
 export const revalidate = 0;
 
+export const metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default async function HomePage() {
   await connectDB();

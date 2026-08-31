@@ -28,6 +28,7 @@ export async function generateMetadata({ params }) {
     title: `${category.name} | Lute Diamonds`,
     description: null,
     keywords: [category.name],
+    alternates: { canonical: `/product-category/${category.slug || slug}` },
   };
 }
 

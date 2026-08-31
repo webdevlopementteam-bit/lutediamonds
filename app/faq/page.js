@@ -7,6 +7,7 @@ export const metadata = {
   title: "FAQ | Lute Diamonds",
   description:
     "Answers to common questions about ordering, delivery, returns, resizing, certification and caring for your Lute Diamonds jewellery.",
+  alternates: { canonical: "/faq" },
 };
 
 const GROUPS = [

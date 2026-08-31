@@ -10,6 +10,7 @@ const interTight = Inter_Tight({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://www.lutediamonds.com"),
   title: "Lute Diamonds | Buy Certified Tanzanite Jewellery in UK",
   description:
     " Lute Diamonds offers certified Tanzanite jewellery in UK & Europe — engagement rings, earrings, bracelets & sets. Handcrafted, ethically sourced. Browse our Tanzanite jewellery now. ",

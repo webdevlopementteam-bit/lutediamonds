@@ -8,6 +8,13 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { formatZAR } from "@/lib/format";
 import { resolvePendingPayment } from "@/lib/resolvePayment";
 
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  return {
+    alternates: { canonical: `/account/orders/${id}` },
+  };
+}
+
 const ArrowIcon = (p) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...p}>
     <path d="M19 12H5M11 6l-6 6 6 6" />

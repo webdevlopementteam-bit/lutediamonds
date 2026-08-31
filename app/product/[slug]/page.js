@@ -68,6 +68,7 @@ export async function generateMetadata({ params }) {
     title,
     description,
     keywords: product.keywords?.length ? product.keywords : undefined,
+    alternates: { canonical: `/product/${product.slug}` },
     openGraph: {
       title,
       description,

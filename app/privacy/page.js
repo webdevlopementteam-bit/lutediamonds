@@ -7,6 +7,7 @@ export const metadata = {
   title: "Privacy Policy | Lute Diamonds",
   description:
     "How Lute Diamonds (Pty) Ltd collects, uses and protects your personal information under POPIA.",
+  alternates: { canonical: "/privacy" },
 };
 
 const SECTIONS = [

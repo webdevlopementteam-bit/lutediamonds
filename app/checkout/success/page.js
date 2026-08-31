@@ -4,6 +4,10 @@ import Order from "@/models/Order";
 import { formatZAR } from "@/lib/format";
 import { resolvePendingPayment } from "@/lib/resolvePayment";
 
+export const metadata = {
+  alternates: { canonical: "/checkout/success" },
+};
+
 export default async function CheckoutSuccessPage({ searchParams }) {
   const sp = await searchParams;
   await connectDB();

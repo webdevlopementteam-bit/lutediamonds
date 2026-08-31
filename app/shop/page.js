@@ -33,6 +33,7 @@ export const metadata = {
   keywords: [
     "Shop diamond jewellery", "shop Tanzanite Jewellery", "Buy jewellery online in Uk", "buy diamond jewellery online in Europe",
   ],
+  alternates: { canonical: "/shop" },
 }
 
 export default async function ShopPage({ searchParams }) {

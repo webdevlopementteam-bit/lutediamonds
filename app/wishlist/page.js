@@ -10,6 +10,7 @@ export const metadata = {
   title: "Wishlist | Lute Diamonds",
   description: null,
   keywords: ["wishlist"],
+  alternates: { canonical: "/wishlist" },
 };
 
 export default async function WishlistPage() {

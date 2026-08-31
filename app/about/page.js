@@ -9,6 +9,7 @@ import TeamSection from "@/components/TeamSection";
 
 export const metadata = {
   title: "About | Lute Diamonds - Kimberley, South Africa",
+  alternates: { canonical: "/about" },
   description:
     " Lute Diamonds has crafted fine diamond jewellery since 2006 in Kimberley, South Africa, now delivering handcrafted pieces across the UK & Europe.",
   keywords: [

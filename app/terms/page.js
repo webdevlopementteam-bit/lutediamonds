@@ -7,6 +7,7 @@ export const metadata = {
   title: "Terms & Conditions | Lute Diamonds",
   description:
     "The terms that apply when you use lutediamonds.com or buy a piece from Lute Diamonds (Pty) Ltd.",
+  alternates: { canonical: "/terms" },
 };
 
 const SECTIONS = [
