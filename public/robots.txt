@@ -6,4 +6,4 @@ Disallow: /account/
 Disallow: /cart
 Disallow: /checkout
 
-Sitemap: https://www.lutediamonds.com/
+Sitemap: https://www.lutediamonds.com/sitemap.xml

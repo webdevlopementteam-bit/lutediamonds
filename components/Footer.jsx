@@ -14,7 +14,7 @@ const SHOP_LINKS = [
 ];
 
 const CATEGORY_LINKS = [
-  { href: "/product-category/jewellery", label: "Jewellery" },
+  { href: "/shop", label: "Jewellery" },
   { href: "/shop", label: "Polished Precious Stones" },
   { href: "/shop", label: "Semi-Precious Polished Stones" },
 ];
