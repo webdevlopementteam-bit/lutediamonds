@@ -18,6 +18,19 @@ const SORT_MAP = {
   default: { createdAt: -1 },
 };
 
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  await connectDB();
+  const category = await Category.findOne({ slug }).select("name").lean();
+  if (!category) return {};
+
+  return {
+    title: `${category.name} | Lute Diamonds`,
+    description: null,
+    keywords: [category.name],
+  };
+}
+
 export default async function CategoryPage({ params, searchParams }) {
   const { slug } = await params;
   const sp = await searchParams;

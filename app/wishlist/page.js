@@ -6,6 +6,12 @@ import ProductCard from "@/components/ProductCard";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { toPlain } from "@/lib/serialize";
 
+export const metadata = {
+  title: "Wishlist | Lute Diamonds",
+  description: null,
+  keywords: ["wishlist"],
+};
+
 export default async function WishlistPage() {
   const session = await getCurrentUser();
 
