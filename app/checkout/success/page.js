@@ -3,6 +3,7 @@ import { connectDB } from "@/lib/db";
 import Order from "@/models/Order";
 import { formatZAR } from "@/lib/format";
 import { resolvePendingPayment } from "@/lib/resolvePayment";
+import SuccessRedirectTimer from "@/components/SuccessRedirectTimer";
 
 export const metadata = {
   alternates: { canonical: "/checkout/success" },
@@ -31,6 +32,18 @@ export default async function CheckoutSuccessPage({ searchParams }) {
   return (
     <div className="container-lute max-w-xl py-20 text-center">
       <h1 className="font-serif text-3xl mb-4">{heading}</h1>
+
+      {order?.paymentStatus === "paid" && (
+        <SuccessRedirectTimer
+          order={{
+            orderNumber: order.orderNumber,
+            orderStatus: order.orderStatus,
+            paymentStatus: order.paymentStatus,
+            total: order.total,
+          }}
+          seconds={3}
+        />
+      )}
 
       {order ? (
         <>
